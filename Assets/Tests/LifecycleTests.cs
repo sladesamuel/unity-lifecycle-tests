@@ -1,25 +1,203 @@
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
 public class LifecycleTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void LifecycleTestsSimplePasses()
+    private LifecycleOutputs component;
+
+    [SetUp]
+    public void Setup()
     {
-        // Use the Assert class to test conditions
+        var gameObject = new GameObject();
+        component = gameObject.AddComponent<LifecycleOutputs>();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
     [UnityTest]
-    public IEnumerator LifecycleTestsWithEnumeratorPasses()
+    public IEnumerator Test1_ShouldPass()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
         yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test2_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test3_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test4_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test5_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test6_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test7_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test8_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test9_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test10_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test11_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test12_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test13_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test14_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test15_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test16_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test17_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test18_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test19_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test20_ShouldPass()
+    {
+        yield return null;
+
+        Assert.Pass();
+    }
+
+    [UnityTest]
+    public IEnumerator Test21_OnEnableCallsShouldEqual2()
+    {
+        component.enabled = false;
+        yield return null;
+
+        component.enabled = true;
+        yield return null;
+
+        Assert.AreEqual(2, component.OnEnableCalls);
+    }
+
+    [UnityTest]
+    public IEnumerator Test22_WhenCacheNumberIsSetTo3_ThenNumberShouldBeRestoredTo3FromCache()
+    {
+        component.enabled = false;
+        yield return null;
+
+        var state = new State { number = 3 };
+        StateCache.StoreState(component.gameObject.name, state);
+
+        component.enabled = true;
+        yield return null;
+
+        Assert.AreEqual(3, component.number);
     }
 }

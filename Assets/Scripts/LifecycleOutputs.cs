@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LifecycleOutputs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int number;
+
+    public int OnEnableCalls { get; private set; }
+
+    void OnEnable()
     {
-        
+        OnEnableCalls++;
+
+        var state = StateCache.GetState(gameObject.name);
+        if (state != null)
+        {
+            number = state.number;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDestroy()
     {
-        
+        var state = new State { number = number };
+        StateCache.StoreState(gameObject.name, state);
     }
 }
